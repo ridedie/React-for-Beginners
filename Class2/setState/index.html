@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React JSX</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<!-- react 임포트 -->
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const root = document.getElementById("root");
+    let counter = 0;
+    function countUp() {
+        counter = counter + 1;
+        render();
+    }
+
+    //react element를 가지고 HTML로 만들어 배치 즉, 사용자에게 보여짐
+    //업데이트 될 내용이 있을 경우 전부 새로 만들어서 업데이트 하지 않고
+    //수정될 부분만 업데이트가 된다.
+    function render() {
+        ReactDOM.render(<Container/>, root);
+    }
+
+    // 컴포넌트의 첫 글자는 반드시 대문자여야 한다. 아니라면 html로 인식
+    const Container = ()=>(
+            <div>
+                <h3>Total clicks: {counter}</h3>
+                <button onClick={countUp}>Click me</button>
+            </div>
+        );
+
+
+    
+    render();
+
+</script>
+</html>
