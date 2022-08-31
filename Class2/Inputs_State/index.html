@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Inputs State</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<!-- react 임포트 -->
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const root = document.getElementById("root");
+    function App() {
+        //첫 번째는 값이고 두 번째는 값을 수정하고 컴포넌트를 새로고침 할 때 쓰는 함수
+        const [amount, setAmount] = React.useState();
+        const [flip, setFlip] = React.useState(true);
+        const onChange = (event) => {
+            setAmount(event.target.value);
+        };
+        const reset =() => setAmount(0);
+
+        //flip이 true라면 false, flase라면 true
+        const onFlip = () => {
+            reset();
+            setFlip((current) => !current);
+        }
+        return (
+            <div>
+                <h1>Super Converter</h1>
+               <div> 
+                    <label for="hours">Hours</label>
+                    <input value={flip ? amount : Math.round(amount/60)} id="hours" placeholder="Hours" type="number" disabled={!flip} onChange={onChange}/>
+                </div>
+                <div>
+                    <label for="minutes">Minutes</label>
+                    <input value={flip ? amount*60 :  amount} id="minutes" placeholder="Minutes" type="number" disabled={flip} onChange={onChange}/>
+                </div>
+                <button onClick={reset}>Reset</button>
+                <button onClick={onFlip}>{flip ? "Flip" : "Turn back"}</button>
+            </div>
+        );
+    }
+
+
+    
+        ReactDOM.render(<App/>, root);
+
+</script>
+</html>

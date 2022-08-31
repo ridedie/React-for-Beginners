@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React setState</title>
+    <title>React State Functions</title>
 </head>
 <body>
     <div id="root"></div>
@@ -18,18 +18,11 @@
     const root = document.getElementById("root");
     
 
-    // 컴포넌트의 첫 글자는 반드시 대문자여야 한다. 아니라면 html로 인식
     function App() {
-        //배열에 있는 값을 각각의 변수에 넣어주는 역할을 한다
-        //구조 분해 할당을 통해 변수로 선언한 것이기 때문에 일회성이 아닌 여러번 사용가능
-        //modifier 함수를 가지고 state를 변경할 때 컴포넌트가 재생성됨
-        //즉 새로운 값을 가지고 수정될 부분만 리렌더링된다.
-        //[state, steState], state 값, setState는 state를 업데이트 시킬 함수
         const [counter, setCounter] = React.useState(0);
-        //const는 주소를 지정하기 때문에 주소 안에 있는 값을 변경이 가능하다
-        //counter+1를 새로운 변수에 넘기고 counter++ counter 값을 직접 연산한다.
         const onClick = () => {
-            setCounter(counter + 1);
+            //함수를 이용했을 때 현재 값이라는걸 보장함
+            setCounter((current) => current +1);
             
         }
         return (
