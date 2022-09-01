@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Final practice and Recap</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<!-- react 임포트 -->
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+
+
+//props 자주 사용하는 인자이름, Btn에서 받은 정보를 전부 첫 번째 인자에 저장된다.
+    function Btn(props) {
+        // style은 중괄호 2개
+        return <button style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+            margin: "20px",
+        }}>{props.type}</button>
+    }
+
+    function App() {
+        
+        return (
+            <div>
+                <Btn type="Save Changes" />
+                <Btn type="Continue" />
+            </div>
+        )
+    }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App/>, root);
+
+</script>
+</html>
