@@ -1,4 +1,5 @@
-import PropTypes from "prop-types";
+import {useEffect, useState} from "react";
+import Movie from "./Movie";
 
 //state로부터 받은 data를 보여준다. (loading, movies)
 //state는 그 data를 API로부터 받아온다. (fetch)
@@ -27,16 +28,13 @@ function App() {
   return (
     <div>
       {loading ? <h1>Loading...</h1>: movies.map(movie => 
-        <div key={movie.id}>
-          <img src={movie.medium_cover_image} />
-          <h2>{movie.title}</h2>
-          <p>{movie.summary}</p>
-          <ul>
-            {movie.genres.map((g) => (
-              <li key={g}>{g}</li>
-            ))}
-          </ul>
-        </div>
+        <Movie 
+          key={movie.id}
+          coverImg={movie.medium.cover.image} 
+          title={movie.title}
+          summary={movie.summary}
+          genres={movie.genres}
+          />
         )}
     </div>
   );
