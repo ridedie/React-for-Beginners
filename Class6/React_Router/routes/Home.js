@@ -9,7 +9,7 @@ import Movie from "../components/Movie";
 //movies를 받아오면 API로부터 얻은 data로 State를 변경한다.
 //movies.map을 이용해서 각각의 movie에 접근해서 그 값을 변환할 수 있다.
 //map은 기존에 있던 배열을 내가 원하는 대로 item이 변형된 새로운 배열을 만들어준다.
-//map을 사용하기 위해서 key를 꼭 줘야한다.
+//map을 사용하기 위해서 key를 꼭 줘야한다
 function Home() {
     const [loading, setLoading] = useState(true);
     const [movies, setMovies] = useState([]);
