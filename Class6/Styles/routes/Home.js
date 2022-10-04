@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import Movie from "../components/Movie";
+import styles from "./Home.module.css";
 
 
 //state로부터 받은 data를 보여준다. (loading, movies)
