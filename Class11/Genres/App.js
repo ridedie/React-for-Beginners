@@ -1,43 +1,40 @@
 import React from "react";
-import axios from "axios";
-import Movie from "./Movie";
 
 class App extends React.Component {
   state = {
+    count: 0
+  };
+  add = () => {
+    this.setState(current => ({ count: current.count + 1 }));
+  };
+  minus = () => {
+    this.setState(current => ({ count: current.count - 1 }));
     isLoading: true,
     movies: []
   };
-  getMovies = async () => {
-    const {
-      data: {
-        data: { movies }
-      }
-    } = await axios.get(
-      "https://yts-proxy.now.sh/list_movies.json?sort_by=rating"
-    );
-    this.setState({ movies, isLoading: false });
-  };
   componentDidMount() {
-    this.getMovies();
+    console.log("Component rendered");
+  }
+  componentDidUpdate() {
+    console.log("I just updated");
+  }
+  componentWillUnmount() {
+    console.log("Goodbye, cruel world");
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 6000);
   }
   render() {
-    const { isLoading, movies } = this.state;
+    console.log("I'm rendering");
     return (
       <div>
-        {isLoading
-          ? "Loading..."
-          : movies.map(movie => (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                year={movie.year}
-                title={movie.title}
-                summary={movie.summary}
-                poster={movie.medium_cover_image}
-              />
-              ))}
-              </div>
-            );
+        <h1>The number is: {this.state.count}</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
+    const { isLoading } = this.state;
+    return <div>{isLoading ? "Loading..." : "We are ready"}</div>;
   }
 }
 
